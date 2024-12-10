@@ -119,12 +119,12 @@ h4 {
 }
 
 @media (max-width: 1000px) {
-   .submenu-ul {
+  /* .submenu-ul {
     display: none;
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
     transform: translateX(-100%);
-  }
+  } */
 
   .submenu-ul.left.open {
     display: block;
@@ -132,11 +132,7 @@ h4 {
     transform: translateX(0);
     z-index: 1000;
   }
-
-  .submenu {
-    display: block;
-    
-  }
+  
 
   .show-more {
     cursor: pointer;

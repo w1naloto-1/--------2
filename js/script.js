@@ -54,9 +54,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+// Элементы меню и подменю
 
-  menuItems.forEach((item) => {
-    item.addEventListener("mouseover", () => {
+// Навешиваем обработчики на элементы меню
+menuItems.forEach((item) => {
+  item.addEventListener("mouseover", () => {
+    if (window.innerWidth >= 768) { // Проверка ширины окна
       clearTimeout(hoverTimeout);
 
       isHovering = true;
@@ -64,51 +67,67 @@ document.addEventListener("DOMContentLoaded", () => {
       hoverTimeout = setTimeout(() => {
         if (isHovering) {
           if (activeSubmenu) {
-            activeSubmenu.style.display = "none";
+            activeSubmenu.style.display = "none"; // Скрываем предыдущее подменю
           }
 
           const submenuId = item.getAttribute("data-menu");
           const submenu = document.getElementById(submenuId);
           if (submenu) {
-            submenu.style.display = "block";
+            submenu.style.display = "block"; // Показываем текущее подменю
             activeSubmenu = submenu;
           }
 
           resetAllShowMore();
         }
       }, 300);
-    });
-
-    item.addEventListener("mouseleave", () => {
-      isHovering = false;
-    });
+    }
   });
 
-  submenus.forEach((submenu) => {
-    submenu.addEventListener("mouseover", () => {
-      clearTimeout(hideTimeout);
-    });
+  item.addEventListener("mouseleave", () => {
+    isHovering = false;
+  });
+});
 
-    submenu.addEventListener("mouseleave", () => {
-      startHideTimeout();
-    });
+// Навешиваем обработчики на подменю
+submenus.forEach((submenu) => {
+  submenu.addEventListener("mouseover", () => {
+    clearTimeout(hideTimeout);
   });
 
-  document.querySelector(".col-3").addEventListener("mouseleave", () => {
+  submenu.addEventListener("mouseleave", () => {
     startHideTimeout();
   });
+});
 
-  function startHideTimeout() {
-    hideTimeout = setTimeout(() => {
-      if (activeSubmenu) {
-        activeSubmenu.style.display = "none";
-        activeSubmenu = null;
-      }
+// Обработчик для всей области меню
+document.querySelector(".col-lg-3").addEventListener("mouseleave", () => {
+  startHideTimeout();
+});
 
-      resetAllShowMore();
-    }, 300);
+// Скрытие подменю с задержкой
+function startHideTimeout() {
+  hideTimeout = setTimeout(() => {
+    if (activeSubmenu) {
+      activeSubmenu.style.display = "none"; // Скрываем активное подменю
+      activeSubmenu = null;
+    }
+
+    resetAllShowMore();
+  }, 300);
+}
+
+// Обработчик для изменения размера окна
+window.addEventListener("resize", () => {
+  if (window.innerWidth < 768 && activeSubmenu) {
+    activeSubmenu.style.display = "none"; // Скрываем подменю на маленьких экранах
+    activeSubmenu = null;
   }
+});
 
+// Функция сброса состояния "Показать больше" (пример)
+function resetAllShowMore() {
+  // Реализуйте логику сброса "Показать больше", если она есть
+}
 
   const menuItem = document.getElementById("softFurnitureMenu");
   const submenu = document.getElementById("softFurnitureSubmenu");
@@ -131,17 +150,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  menuItems.forEach(item => {
-    item.addEventListener("click", () => {
-      // Сдвигаем основной блок меню влево с помощью инлайн-стиля
-      mainMenu.style.transform = "translateX(-100%)";
-      
-      // Показываем подменю (например, в первом пункте)
-      const submenu = item.nextElementSibling; // если подменю идет сразу после пункта
-      if (submenu) {
-        submenu.style.display = "block";
-      }
-    });
-  });
-
+  
 });
