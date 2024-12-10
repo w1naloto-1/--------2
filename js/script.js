@@ -108,12 +108,12 @@ document.addEventListener("DOMContentLoaded", () => {
       resetAllShowMore();
     }, 300);
   }
-});
 
-document.addEventListener("DOMContentLoaded", function () {
+
   const menuItem = document.getElementById("softFurnitureMenu");
   const submenu = document.getElementById("softFurnitureSubmenu");
   const mainMenu = document.getElementById("mainMenu");
+  
 
   menuItem.addEventListener("click", function () {
     submenu.classList.toggle("open");
@@ -129,4 +129,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     showMoreBtn.style.display = "none";
   });
+
+
+  menuItems.forEach(item => {
+    item.addEventListener("click", () => {
+      // Сдвигаем основной блок меню влево с помощью инлайн-стиля
+      mainMenu.style.transform = "translateX(-100%)";
+      
+      // Показываем подменю (например, в первом пункте)
+      const submenu = item.nextElementSibling; // если подменю идет сразу после пункта
+      if (submenu) {
+        submenu.style.display = "block";
+      }
+    });
+  });
+
 });
