@@ -1,0 +1,158 @@
+/* Стили для левой панели */
+h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+.list-group-item {
+    cursor: pointer;
+    padding: 8px 7px;
+    border: none;
+ 
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.list-group-item:hover {
+    background-color: #F4F4F4;
+    font-weight: 600;
+}
+
+.list-group-item span {
+    font-size: 17;
+    max-width: 180px;
+    width: 100%;
+}
+
+
+/* Стили для подменю */
+.submenu {
+    background-color: #fdfdfd;
+
+
+    border-radius: 5px;
+
+    display: none;
+/* По умолчанию подменю скрыто */
+}
+
+.submenu ul {
+    list-style-type: none;
+    padding: 6px 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.submenu ul li {
+    font-size: 14px;
+    padding-top:12px;
+    color: #555;
+    transition: color 0.3s ease;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+/* .submenu ul li:hover {
+    color: #007bff;
+} */
+
+/* Анимация появления подменю */
+.submenu {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.menu {
+
+    display: flex;
+    flex-direction: row;
+    line-height: 21.34px;
+    border-radius: 5px;
+    background-color: #Fff;
+    padding: 15px 0;
+}
+
+.line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+.submenu-ul.brands {
+    padding-right: 20px;
+}
+
+.submenu-ul {
+    padding: 0;
+}
+
+.submenu-ul.right ul li {
+    padding-bottom: 18px ;
+    padding-top: 0;
+}
+
+.submenu-ul.right ul {
+    padding:0;
+}
+
+.hidden {
+    display: none;
+}
+
+.show-more {
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+
+.submenu-ul.brands ul {
+    justify-content: space-between;
+}
+
+@media (max-width:1000px) {
+ 
+.submenu-ul {
+    display: none; /* Подменю скрыто по умолчанию */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateX(-100%); /* Подменю скрыто слева */
+  }
+  
+  .submenu-ul.left.open {
+    display: block; /* Подменю показывается */
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 1000; /* Подменю появляется с анимацией */
+  }
+  
+  .show-more {
+    cursor: pointer;
+    color: #007bff;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  
+  
+}
