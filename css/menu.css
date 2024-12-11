@@ -2,6 +2,10 @@ li {
   cursor: pointer;
 }
 
+.hidden {
+    display: none;
+}
+
 li:hover {
   opacity: 0.8;
 }
@@ -139,46 +143,41 @@ h4 {
 @media (max-width: 1024px) {
   .menu-item-mobile {
     position: relative;
-  
+    width: 100%;
     height: 100%;
     background-color: #fff;
-    
-
+    display: flex;
+    justify-content: space-between;
   }
 
   .menu-item-mobile span {
-    max-width: 222px;
-    width: 100%;
+ 
     padding-right: 14px;
   }
 
   .menu {
     display: none;
-
   }
 
   .container-mobile {
     display: block;
-  }
-
-  .container-mobile {
-
-
+    width: 100%;
+    overflow:hidden;
   }
 
   .menu-mobile {
     width: 100%;
     background-color: #fff;
-    transition: transform 0.3s ease;
-    width: 200vw;
+    display: flex;
+    transition: 0.3s ease;
    
   }
 
   .menu-mobile-main {
     display: flex;
     flex-direction: column;
-    width: 100vw;
-
+    flex: 0 0 100vw;
+    flex-shrink: 0;
   }
 
   .mobile-button {
@@ -186,7 +185,7 @@ h4 {
     background: none; /* Убирает фон */
     border: none; /* Убирает границу */
     padding: 12px 20px;
-    
+
     margin: 0; /* Убирает внешние отступы */
     font: inherit; /* Наследует шрифт от родителя */
     text-align: inherit; /* Наследует выравнивание текста */
@@ -203,12 +202,13 @@ h4 {
 
   li {
     padding: 12px 20px;
-    border-top: 1px solid #CACACA;
+    border-top: 1px solid #cacaca;
   }
 
   .sub-menu-container {
     background-color: #fff;
-    width: 100vw;
+    flex: 0 0 100vw;
+    flex-shrink: 0;
   }
 
   .sub-menu ul {

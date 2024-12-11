@@ -111,7 +111,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Обработка клика по пункту меню
 
-  
+  const container = document.querySelector(".menu-mobile");
+const hiddenLists = document.querySelectorAll(".sub-menu-container.hidden");
+const buttonBack = document.querySelector(".mobile-button");
+
+container.addEventListener("click", (event) => {
+  const li = event.target.closest("li");
+  if (li && li.dataset.id) {
+    const id = li.dataset.id;
+
+    hiddenLists.forEach((ul) => {
+      if (ul.dataset.id === id) {
+        ul.classList.remove("hidden");
+      } else {
+        ul.classList.add("hidden");
+      }
+    });
+
+    // Сдвигаем контейнер влево
+    container.style.transform = "translateX(-100%)";
+  }
+});
+
+// Добавляем обработчик на кнопку "Назад"
+buttonBack.addEventListener("click",  (event) => {
+  // Возвращаем контейнер на исходную позицию
+  event.preventDefault(); // Предотвращаем стандартное поведение кнопки (если есть)
+  event.stopPropagation();
+  container.style.transform = "translateX(0)";
+
+  // Скрываем все списки подменю
+  hiddenLists.forEach((ul) => {
+    ul.classList.add("hidden");
+  });
+});
+
 
 
 
