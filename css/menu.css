@@ -1,3 +1,11 @@
+li {
+  cursor: pointer;
+}
+
+li:hover {
+  opacity: 0.8;
+}
+
 h4 {
   font-size: 16px;
   font-weight: 600;
@@ -118,37 +126,94 @@ h4 {
   justify-content: space-between;
 }
 
-@media (max-width: 1000px) {
-  /* .submenu-ul {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    transform: translateX(-100%);
-  } */
+.visible {
+  display: block;
+}
 
-  .submenu-ul.left.open {
-    display: block;
-    opacity: 1;
-    transform: translateX(0);
-    z-index: 1000;
-  }
+.container-mobile {
+  display: none;
+  max-height: 653px;
+  font-size: 17px;
+}
+
+@media (max-width: 1024px) {
+  .menu-item-mobile {
+    position: relative;
   
+    height: 100%;
+    background-color: #fff;
+    
 
-  .show-more {
-    cursor: pointer;
-    color: #007bff;
   }
 
-  .hidden {
-    display: none;
+  .menu-item-mobile span {
+    max-width: 222px;
+    width: 100%;
+    padding-right: 14px;
   }
-/* 
+
   .menu {
-    overflow-x: hidden;
-  } */
-
-  .line {
     display: none;
+
   }
-  
+
+  .container-mobile {
+    display: block;
+  }
+
+  .container-mobile {
+
+
+  }
+
+  .menu-mobile {
+    width: 100%;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+    width: 200vw;
+   
+  }
+
+  .menu-mobile-main {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+
+  }
+
+  .mobile-button {
+    all: unset; /* Сбрасывает все стили кнопки */
+    background: none; /* Убирает фон */
+    border: none; /* Убирает границу */
+    padding: 12px 20px;
+    
+    margin: 0; /* Убирает внешние отступы */
+    font: inherit; /* Наследует шрифт от родителя */
+    text-align: inherit; /* Наследует выравнивание текста */
+    cursor: pointer;
+  }
+
+  .menu-mobile ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none; /* Убирает маркеры у списка внутри .sub-menu */
+    padding: 0; /* Убирает отступы у списка */
+    margin: 0; /* Убирает внешние отступы */
+  }
+
+  li {
+    padding: 12px 20px;
+    border-top: 1px solid #CACACA;
+  }
+
+  .sub-menu-container {
+    background-color: #fff;
+    width: 100vw;
+  }
+
+  .sub-menu ul {
+    list-style-type: none; /* Убирает маркеры у списка внутри .sub-menu */
+    padding: 0; /* Убирает отступы у списка */
+    margin: 0; /* Убирает внешние отступы */
+  }
 }
