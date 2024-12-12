@@ -112,46 +112,63 @@ document.addEventListener("DOMContentLoaded", () => {
   // Обработка клика по пункту меню
 
   const container = document.querySelector(".menu-mobile");
-const hiddenLists = document.querySelectorAll(".sub-menu-container.hidden");
-const buttonBack = document.querySelector(".mobile-button");
+  const hiddenLists = document.querySelectorAll(".sub-menu-container.hidden");
+  const buttonBack = document.getElementById("backButtonMobile1");
 
-container.addEventListener("click", (event) => {
-  const li = event.target.closest("li");
-  if (li && li.dataset.id) {
-    const id = li.dataset.id;
+  if (!container || !buttonBack) {
+    console.error("Не найдены элементы container или buttonBack!");
+    return;
+  }
 
+  // Обработчик для перехода в подменю
+  container.addEventListener("click", (event) => {
+    const li = event.target.closest("li");
+    if (li && li.dataset.id) {
+      const id = li.dataset.id;
+
+      hiddenLists.forEach((ul) => {
+        if (ul.dataset.id === id) {
+          ul.classList.remove("hidden");
+        } else {
+          ul.classList.add("hidden");
+        }
+      });
+
+      // Сдвигаем контейнер влево
+      container.style.transform = "translateX(-100%)";
+    }
+  });
+
+  // Обработчик для кнопки "Назад"
+  buttonBack.addEventListener("click", () => {
+    // Останавливаем всплытие события
+
+    console.log("Клик на кнопку 'Назад' произошел!"); // Проверяем, срабатывает ли обработчик
+
+    // Возвращаем контейнер на исходную позицию
+    container.style.transform = "translateX(0)";
+
+    setTimeout(() =>  { 
     hiddenLists.forEach((ul) => {
-      if (ul.dataset.id === id) {
-        ul.classList.remove("hidden");
-      } else {
-        ul.classList.add("hidden");
-      }
+      ul.classList.add("hidden");
+    });
+},300);
+
+  });
+
+  // Находим кнопку и скрытые элементы
+const showMoreButton = document.getElementById("showMoreButton");
+const hiddenItems = document.querySelectorAll(".menu-item-mobile.hidden");
+
+// Добавляем обработчик на кнопку
+showMoreButton.addEventListener("click", () => {
+    hiddenItems.forEach(item => {
+        item.classList.remove("hidden"); // Убираем класс hidden
     });
 
-    // Сдвигаем контейнер влево
-    container.style.transform = "translateX(-100%)";
-  }
+    // При необходимости можно скрыть кнопку "Показать больше"
+    showMoreButton.style.display = "none";
 });
-
-// Добавляем обработчик на кнопку "Назад"
-buttonBack.addEventListener("click",  (event) => {
-  // Возвращаем контейнер на исходную позицию
-  event.preventDefault(); // Предотвращаем стандартное поведение кнопки (если есть)
-  event.stopPropagation();
-  container.style.transform = "translateX(0)";
-
-  // Скрываем все списки подменю
-  hiddenLists.forEach((ul) => {
-    ul.classList.add("hidden");
-  });
-});
-
-
-
-
-
-
-
 
 
 });
