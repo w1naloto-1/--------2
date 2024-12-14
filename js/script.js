@@ -102,9 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   
     const container = document.querySelector(".menu-mobile-main-сatalog");
-    const hiddenList = document.querySelectorAll(".sub-menu-container.hidden");
+    const hiddenList = document.querySelectorAll(".menu-mobile-main.hidden");
     const containerS = document.querySelector(".menu-mobile-main"); // Исправлено имя класса
-    const hiddenLists = document.querySelectorAll(".menu-mobile-main");
+    const hiddenLists = document.querySelectorAll(".sub-menu-container.hidden");
   
 
 
