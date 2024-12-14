@@ -108,8 +108,8 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
 
-    const buttonBack1 = document.getElementById("backButtonMobile2");
-    const buttonBack2 = document.getElementById("backButtonMobile1");
+    const buttonBack1 = document.getElementById("backButtonMobile1");
+    const buttonBack2 = document.getElementById("backButtonMobile2");
    
 
 
