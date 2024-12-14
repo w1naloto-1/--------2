@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   
-    const container = document.querySelector(".menu-mobile-main-сatalog");
+    const container = document.querySelector(".menu-mobile");
     const hiddenList = document.querySelectorAll(".menu-mobile-main.hidden");
     const containerS = document.querySelector(".menu-mobile-main"); // Исправлено имя класса
     const hiddenLists = document.querySelectorAll(".sub-menu-container.hidden");
@@ -150,23 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     
         container.style.transform = "translateX(-100%)";
-      }
-    });
-    
-    containerS.addEventListener("click", (event) => {
-      const li = event.target.closest("li");
-      if (li && li.dataset.id) {
-        const id = li.dataset.id;
-    
-        hiddenList.forEach((ul) => {
-          if (ul.dataset.id === id) {
-            ul.classList.remove("hidden");
-          } else {
-            ul.classList.add("hidden");
-          }
-        });
-    
-        containerS.style.transform = "translateX(-100%)";
       }
     });
     
