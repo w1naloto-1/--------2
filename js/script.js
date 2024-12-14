@@ -110,20 +110,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const buttonBack1 = document.getElementById("backButtonMobile2");
     const buttonBack2 = document.getElementById("backButtonMobile1");
-    if (!container || !containerS || !buttonBack1) {
-      console.error("Не найдены элементы container, containerS или buttonBack!");
-      return;
-    }
-
-    
+   
 
 
     containerS.addEventListener("click", (event) => {
       const li = event.target.closest("li");
+      
     if (li && !li.closest(".main-menu") && li.dataset.id){
         const id = li.dataset.id;
     
-        hiddenList.forEach((ul) => {
+        hiddenLists.forEach((ul) => {
           if (ul.dataset.id === id) {
             ul.classList.remove("hidden");
           } else {
@@ -141,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (li && li.dataset.id) {
         const id = li.dataset.id;
     
-        hiddenLists.forEach((ul) => {
+        hiddenList.forEach((ul) => {
           if (ul.dataset.id === id) {
             ul.classList.remove("hidden");
           } else {
